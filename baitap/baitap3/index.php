@@ -4,6 +4,66 @@ session_start();
 $_SESSION["count"] = 0;
 $_SESSION["points"] = 0;
 $_SESSION["mean"] = 0;
+function check($point) {
+           if ($point >= 0 && $point < 3) {
+            return 1;
+           }elseif($point >= 3 && $point <= 4.9){
+            return 1;
+           }
+           elseif($point >= 5 && $point <= 5.9){
+            return 2;
+           }
+           elseif($point >= 6 && $point <= 6.9){
+            return 3;
+           }
+           elseif($point >= 7 && $point <= 8.9){
+            return 4;
+           }
+           elseif($point > 9 && $point <= 10){
+            return 5;
+           }
+        }
+function show($checks) {
+        switch ($checks) {
+         case 1:
+            echo "kém";
+          break;
+          case 2:
+            echo "yếu";
+          break;
+          case 3:
+            echo "trung bình";
+          break;
+          case 4:
+            echo "khá";
+          break;
+          case 5:
+            echo "xuất sắc";
+          break;
+          default:
+            echo "";
+          }
+        }
+
+public function show_points($points, $start, $end)
+{
+  $subject = subjects_random($points, $start, $end);
+  echo $points[$subject];
+}
+
+public function show_subjects($points, $start, $end)
+{
+  $subject = subjects_random($points, $start, $end);
+  foreach($points as $index => $point) {
+  if (!strcmp($subject, $index)) { echo $index;}
+  }
+}
+
+public function subjects_random($points, $start, $end)
+{
+  $number = rand($start,$end);
+  return $subject = 'subject'.$number;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -179,45 +239,9 @@ $_SESSION["mean"] = 0;
         echo $_SESSION["mean"];
       }?></td>
       <td><?php 
-        function check($point) {
-           if ($point >= 0 && $point < 3) {
-            return 1;
-           }elseif($point >= 3 && $point <= 4.9){
-            return 1;
-           }
-           elseif($point >= 5 && $point <= 5.9){
-            return 2;
-           }
-           elseif($point >= 6 && $point <= 6.9){
-            return 3;
-           }
-           elseif($point >= 7 && $point <= 8.9){
-            return 4;
-           }
-           elseif($point > 9 && $point <= 10){
-            return 5;
-           }
-        }
+        
         $check = check($_SESSION["mean"]);
-        switch ($check) {
-         case 1:
-            echo "kém";
-          break;
-          case 2:
-            echo "yếu";
-          break;
-          case 3:
-            echo "trung bình";
-          break;
-          case 4:
-            echo "khá";
-          break;
-          case 5:
-            echo "xuất sắc";
-          break;
-          default:
-            echo "";
-          }
+        
         ?></td>
     </tr>
   </tbody>
@@ -232,7 +256,7 @@ $_SESSION["mean"] = 0;
       <div class="container">
         <div class="row mb-5 align-items-center">
           <div class="col-md-7 text-left">
-            <h2 class="section-title mb-3">Properties</h2>
+            <h2 class="section-title mb-3">Xuất ngẫu nhiên</h2>
           </div>
           <div class="col-md-5 text-left text-md-right">
             <div class="custom-nav1">
@@ -248,13 +272,13 @@ $_SESSION["mean"] = 0;
               <img src="images/property_1.jpg" alt="Image" class="img-fluid">
             </a>
             <div class="prop-details p-3">
-              <div><strong class="price">$3,400,000</strong></div>
+              <div><strong class="price">Points random</strong></div>
               <div class="mb-2 d-flex justify-content-between">
-                <span class="w border-r">6 beds</span> 
-                <span class="w border-r">4 baths</span>
-                <span class="w">4,250 sqft.</span>
+                <span class="w border-r"><?php show_points($points, 3 , 10); ?></span> 
+                <!-- <span class="w border-r">4 baths</span>
+                <span class="w">4,250 sqft.</span> -->
               </div>
-              <div>480 12th, Unit 14, San Francisco, CA</div>
+             <!--  <div>480 12th, Unit 14, San Francisco, CA</div> -->
             </div>
           </div>
 
@@ -263,13 +287,13 @@ $_SESSION["mean"] = 0;
               <img src="images/property_2.jpg" alt="Image" class="img-fluid">
             </a>
             <div class="prop-details p-3">
-              <div><strong class="price">$3,400,000</strong></div>
+              <div><strong class="price">Subjects random</strong></div>
               <div class="mb-2 d-flex justify-content-between">
-                <span class="w border-r">6 beds</span> 
-                <span class="w border-r">4 baths</span>
-                <span class="w">4,250 sqft.</span>
+                <span class="w border-r"><?php show_subjects($points, 3 , 12); ?></span> 
+        <!--         <span class="w border-r">4 baths</span>
+                <span class="w">4,250 sqft.</span> -->
               </div>
-              <div>480 12th, Unit 14, San Francisco, CA</div>
+              <!-- <div>480 12th, Unit 14, San Francisco, CA</div> -->
             </div>
           </div>
 
