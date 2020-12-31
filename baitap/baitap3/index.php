@@ -45,13 +45,13 @@ function show($checks) {
           }
         }
 
-public function show_points($points, $start, $end)
+function show_points($points, $start, $end)
 {
   $subject = subjects_random($points, $start, $end);
   echo $points[$subject];
 }
 
-public function show_subjects($points, $start, $end)
+function show_subjects($points, $start, $end)
 {
   $subject = subjects_random($points, $start, $end);
   foreach($points as $index => $point) {
@@ -59,7 +59,7 @@ public function show_subjects($points, $start, $end)
   }
 }
 
-public function subjects_random($points, $start, $end)
+function subjects_random($points, $start, $end)
 {
   $number = rand($start,$end);
   return $subject = 'subject'.$number;
@@ -239,9 +239,8 @@ public function subjects_random($points, $start, $end)
         echo $_SESSION["mean"];
       }?></td>
       <td><?php 
-        
         $check = check($_SESSION["mean"]);
-        
+        show($check);
         ?></td>
     </tr>
   </tbody>
@@ -269,7 +268,7 @@ public function subjects_random($points, $start, $end)
 
           <div class="property">
             <a href="property-single.html">
-              <img src="images/property_1.jpg" alt="Image" class="img-fluid">
+              <img src="https://point.edu/wp-content/themes/point/img/point-logo-stacked-fc.png" alt="Image" class="img-fluid">
             </a>
             <div class="prop-details p-3">
               <div><strong class="price">Points random</strong></div>
@@ -284,7 +283,7 @@ public function subjects_random($points, $start, $end)
 
           <div class="property">
             <a href="property-single.html">
-              <img src="images/property_2.jpg" alt="Image" class="img-fluid">
+              <img src="https://pbs.twimg.com/profile_images/378800000050160738/74cc276d58ea7ea1734d89e57fd4f5fa_400x400.jpeg" alt="Image" class="img-fluid">
             </a>
             <div class="prop-details p-3">
               <div><strong class="price">Subjects random</strong></div>
@@ -294,36 +293,6 @@ public function subjects_random($points, $start, $end)
                 <span class="w">4,250 sqft.</span> -->
               </div>
               <!-- <div>480 12th, Unit 14, San Francisco, CA</div> -->
-            </div>
-          </div>
-
-          <div class="property">
-            <a href="property-single.html">
-              <img src="images/property_3.jpg" alt="Image" class="img-fluid">
-            </a>
-            <div class="prop-details p-3">
-              <div><strong class="price">$3,400,000</strong></div>
-              <div class="mb-2 d-flex justify-content-between">
-                <span class="w border-r">6 beds</span> 
-                <span class="w border-r">4 baths</span>
-                <span class="w">4,250 sqft.</span>
-              </div>
-              <div>480 12th, Unit 14, San Francisco, CA</div>
-            </div>
-          </div>
-
-          <div class="property">
-            <a href="property-single.html">
-              <img src="images/property_4.jpg" alt="Image" class="img-fluid">
-            </a>
-            <div class="prop-details p-3">
-              <div><strong class="price">$3,400,000</strong></div>
-              <div class="mb-2 d-flex justify-content-between">
-                <span class="w border-r">6 beds</span> 
-                <span class="w border-r">4 baths</span>
-                <span class="w">4,250 sqft.</span>
-              </div>
-              <div>480 12th, Unit 14, San Francisco, CA</div>
             </div>
           </div>
 
